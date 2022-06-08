@@ -16,7 +16,9 @@ textarea{
   resize: none;
   color: #000000;
   border-left: 1px solid black;
-  padding: 10px;
+  padding: 5px;
+  margin: 0;
+  align-items: flex-start;
 
 }
 
@@ -39,7 +41,7 @@ textarea{
 
 .row {
   white-space: pre-wrap;
-  height: 180px;
+  height: 80px;
   border-top: 1px solid white;;
 }
 
@@ -47,6 +49,7 @@ textarea{
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
+  text-align: right;
   
 }
 
@@ -84,4 +87,5 @@ textarea{
 .test {
   background-color: #ff6961;
 }
+
 
