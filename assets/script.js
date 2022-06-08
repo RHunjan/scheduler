@@ -1,4 +1,4 @@
-var hoursArray = [09,10,11,12,13,14,15,16,17];
+var hoursArray = [09,10,11,12,13,14,19,20,21];
 
 // Moment date and time
 var today = moment().format("dddd, MMMM Do YYYY, h:mma");
@@ -10,22 +10,7 @@ console.log(time);
 //display current date
 $("#currentDay").text(today);
 
-//compare hour with current time and change color of textarea
 
-var timeColor = function(){
-
-    for (var i = 0; i <hoursArray.length; i++){
-        if (time < hoursArray[i]){
-            $("#" + hoursArray[i]).addClass("future");
-      } else if (time == hoursArray[i]){
-            $("#" + hoursArray[i]).addClass("present");
-      } else {
-      $("#" + hoursArray[i]).addClass("past");
- }
-}
-};
-
-setInterval(timeColor, (1000*60));
 
 // save textarea input
 
@@ -35,6 +20,9 @@ var elevenAM = $("#11").val(localStorage.getItem("elevenAM"));
 var twelvePM = $("#12").val(localStorage.getItem("twelvePM"));
 var onePM = $("#1").val(localStorage.getItem("onePM"));
 var twoPM = $("#2").val(localStorage.getItem("twoPM"));
+var threePM = $("#3").val(localStorage.getItem("threePM"));
+var fourPM = $("#4").val(localStorage.getItem("fourPM"));
+var fivePM = $("#5").val(localStorage.getItem("fivePM"));
 
 // set save buttons
 
@@ -127,3 +115,22 @@ $("#five").click(function(){
     $("#5").val(savedTask);
 
 });
+
+//compare hour with current time and change color of textarea
+
+var timeColor = function(){
+    console.log("running function");
+    for (var i = 0; i <hoursArray.length; i++){
+        if (time < hoursArray[i]){
+           $("#" + hoursArray[i]).addClass("future");
+      } else if (time == hoursArray[i]){
+            $("#" + hoursArray[i]).addClass("present");
+      } else {
+              console.log(time);
+            console.log(hoursArray[i]);
+      $("#" + hoursArray[i]).addClass("past");
+ }
+}
+};
+
+setInterval(timeColor, (1000*5));
