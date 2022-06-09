@@ -1,4 +1,4 @@
-var hoursArray = [09,10,11,12,13,14,19,20,21];
+var hoursArray = [09,10,11,12,13,14,21,22,23];
 
 // Moment date and time
 var today = moment().format("dddd, MMMM Do YYYY, h:mma");
@@ -118,19 +118,44 @@ $("#five").click(function(){
 
 //compare hour with current time and change color of textarea
 
-var timeColor = function(){
-    console.log("running function");
-    for (var i = 0; i <hoursArray.length; i++){
-        if (time < hoursArray[i]){
-           $("#" + hoursArray[i]).addClass("future");
-      } else if (time == hoursArray[i]){
-            $("#" + hoursArray[i]).addClass("present");
-      } else {
-              console.log(time);
-            console.log(hoursArray[i]);
-      $("#" + hoursArray[i]).addClass("past");
- }
-}
-};
+var present = [];
+var future = [];
+var past = [];
 
-setInterval(timeColor, (1000*5));
+var checkingTime = function(){
+    for (i=0; i<hoursArray.length; i++){
+        if (time == hoursArray[i]){
+              present.push(hoursArray[i]);
+        } else if (time < hoursArray[i]){
+            future.push(hoursArray[i]); 
+        } else if (time > hoursArray[i]) {
+            past.push(hoursArray[i]);
+        }
+     
+    // run functions to add colors
+
+    presentHour();
+    futureHour();
+    pastHour();
+
+ }};
+
+ var presentHour = function (){
+   for (i=0; i < present.length; i++)
+   $("#" + present[i]).addClass("present");
+ }
+
+  var futureHour = function (){
+   for (i=0; i < future.length; i++)
+   $("#" + future[i]).addClass("future");
+ }
+
+  var pastHour = function (){
+   for (i=0; i > past.length; i++)
+   $("#" + past[i]).addClass("past");
+ }
+
+
+
+setInterval(checkingTime, (1000*60));
+
